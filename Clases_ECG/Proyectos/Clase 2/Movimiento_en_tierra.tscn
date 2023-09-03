@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://8bpgipmvah64"]
+
+[ext_resource type="Texture2D" uid="uid://bqum72r4j5srf" path="res://icon.svg" id="1_gytpk"]
+[ext_resource type="Script" path="res://Proyectos/Clase 1/Jugador.gd" id="3_odjov"]
+[ext_resource type="Texture2D" uid="uid://cr0qmu3k6cm6e" path="res://Paquetes_de_recursos/Sunny-land-files/Sunny-land-assets-files/PNG/sprites/player/idle/player-idle-1.png" id="4_16jx7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1uc7"]
+size = Vector2(128, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3tp8"]
+size = Vector2(1280, 129)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_equfc"]
+radius = 8.0
+height = 22.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 324)
+shape = SubResource("RectangleShape2D_e1uc7")
+
+[node name="Icon" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(0, 324)
+scale = Vector2(1, 5.0625)
+texture = ExtResource("1_gytpk")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(1152, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(0, 324)
+shape = SubResource("RectangleShape2D_e1uc7")
+
+[node name="Icon" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(0, 324)
+scale = Vector2(1, 5.0625)
+texture = ExtResource("1_gytpk")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(576, 584.5)
+shape = SubResource("RectangleShape2D_n3tp8")
+
+[node name="Icon" type="Sprite2D" parent="StaticBody2D3"]
+position = Vector2(576, 584)
+scale = Vector2(10, 1)
+texture = ExtResource("1_gytpk")
+
+[node name="Jugador" type="CharacterBody2D" parent="."]
+position = Vector2(456, 208)
+scale = Vector2(3, 3)
+script = ExtResource("3_odjov")
+
+[node name="Sprite2D" type="Sprite2D" parent="Jugador"]
+texture_filter = 1
+texture = ExtResource("4_16jx7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador"]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_equfc")

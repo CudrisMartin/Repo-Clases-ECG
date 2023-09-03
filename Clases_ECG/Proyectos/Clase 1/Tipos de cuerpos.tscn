@@ -1,0 +1,106 @@
+[gd_scene load_steps=13 format=3 uid="uid://b8kdk7115cgkw"]
+
+[ext_resource type="Texture2D" uid="uid://bqum72r4j5srf" path="res://icon.svg" id="1_4h62a"]
+[ext_resource type="Texture2D" uid="uid://bfauirwpg7aay" path="res://Paquetes_de_recursos/Pixel Adventure 2/Enemies/Rocks/Rock2_Idle (32x28).png" id="2_tq05k"]
+[ext_resource type="Texture2D" uid="uid://cr0qmu3k6cm6e" path="res://Paquetes_de_recursos/Sunny-land-files/Sunny-land-assets-files/PNG/sprites/player/idle/player-idle-1.png" id="3_ekm1o"]
+[ext_resource type="Script" path="res://Proyectos/Clase 1/Jugador.gd" id="3_pjbru"]
+[ext_resource type="Texture2D" uid="uid://bl68lag0gwtg7" path="res://Paquetes_de_recursos/Sunny-land-files/Sunny-land-assets-files/PNG/environment/props/big-crate.png" id="5_mbkcd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1uc7"]
+size = Vector2(128, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3tp8"]
+size = Vector2(1280, 129)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dxh2a"]
+friction = 0.01
+bounce = 0.84
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2i3j2"]
+custom_solver_bias = 0.772
+radius = 48.0937
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_equfc"]
+radius = 8.0
+height = 22.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h05n0"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mm3pi"]
+size = Vector2(96, 96)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 324)
+shape = SubResource("RectangleShape2D_e1uc7")
+
+[node name="Icon" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(0, 324)
+scale = Vector2(1, 5.0625)
+texture = ExtResource("1_4h62a")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(1152, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(0, 324)
+shape = SubResource("RectangleShape2D_e1uc7")
+
+[node name="Icon" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(0, 324)
+scale = Vector2(1, 5.0625)
+texture = ExtResource("1_4h62a")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(576, 584.5)
+shape = SubResource("RectangleShape2D_n3tp8")
+
+[node name="Icon" type="Sprite2D" parent="StaticBody2D3"]
+position = Vector2(576, 584)
+scale = Vector2(10, 1)
+texture = ExtResource("1_4h62a")
+
+[node name="Pelota" type="RigidBody2D" parent="."]
+position = Vector2(352, 216)
+mass = 0.1
+inertia = 0.1
+physics_material_override = SubResource("PhysicsMaterial_dxh2a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pelota"]
+shape = SubResource("CircleShape2D_2i3j2")
+
+[node name="Rock2Idle(32x28)" type="Sprite2D" parent="Pelota"]
+scale = Vector2(3, 3)
+texture = ExtResource("2_tq05k")
+hframes = 13
+
+[node name="Jugador" type="CharacterBody2D" parent="."]
+position = Vector2(456, 208)
+scale = Vector2(3, 3)
+script = ExtResource("3_pjbru")
+
+[node name="Sprite2D" type="Sprite2D" parent="Jugador"]
+texture_filter = 1
+texture = ExtResource("3_ekm1o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador"]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_equfc")
+
+[node name="Caja" type="RigidBody2D" parent="."]
+position = Vector2(729, 459)
+physics_material_override = SubResource("PhysicsMaterial_h05n0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("5_mbkcd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja"]
+shape = SubResource("RectangleShape2D_mm3pi")

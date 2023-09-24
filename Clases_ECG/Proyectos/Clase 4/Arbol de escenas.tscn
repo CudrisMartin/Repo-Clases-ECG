@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=3 uid="uid://cygcc2713nhls"]
+
+[ext_resource type="Script" path="res://Proyectos/Clase 4/Arbol de escenas.gd" id="1_mprus"]
+[ext_resource type="Texture2D" uid="uid://bqum72r4j5srf" path="res://icon.svg" id="2_jx3oh"]
+[ext_resource type="Script" path="res://Proyectos/Clase 1/Jugador.gd" id="3_qrnjg"]
+[ext_resource type="Texture2D" uid="uid://cr0qmu3k6cm6e" path="res://Paquetes_de_recursos/Sunny-land-files/Sunny-land-assets-files/PNG/sprites/player/idle/player-idle-1.png" id="4_fjjlt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1uc7"]
+size = Vector2(128, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3tp8"]
+size = Vector2(1280, 129)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_equfc"]
+radius = 8.0
+height = 22.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g82jp"]
+size = Vector2(1020.75, 264)
+
+[node name="Areas" type="Node2D"]
+script = ExtResource("1_mprus")
+
+[node name="Escenario" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Escenario"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/StaticBody2D"]
+position = Vector2(0, 324)
+shape = SubResource("RectangleShape2D_e1uc7")
+
+[node name="Icon" type="Sprite2D" parent="Escenario/StaticBody2D"]
+position = Vector2(0, 324)
+scale = Vector2(1, 5.0625)
+texture = ExtResource("2_jx3oh")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Escenario"]
+position = Vector2(1152, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/StaticBody2D2"]
+position = Vector2(0, 324)
+shape = SubResource("RectangleShape2D_e1uc7")
+
+[node name="Icon" type="Sprite2D" parent="Escenario/StaticBody2D2"]
+position = Vector2(0, 324)
+scale = Vector2(1, 5.0625)
+texture = ExtResource("2_jx3oh")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Escenario"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/StaticBody2D3"]
+position = Vector2(576, 584.5)
+shape = SubResource("RectangleShape2D_n3tp8")
+
+[node name="Icon" type="Sprite2D" parent="Escenario/StaticBody2D3"]
+position = Vector2(576, 584)
+scale = Vector2(10, 1)
+texture = ExtResource("2_jx3oh")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Escenario"]
+position = Vector2(578, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/StaticBody2D4"]
+shape = SubResource("RectangleShape2D_n3tp8")
+
+[node name="Icon" type="Sprite2D" parent="Escenario/StaticBody2D4"]
+scale = Vector2(10, 1)
+texture = ExtResource("2_jx3oh")
+
+[node name="Jugador" type="CharacterBody2D" parent="."]
+position = Vector2(232, 468)
+scale = Vector2(3, 3)
+script = ExtResource("3_qrnjg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Jugador"]
+texture_filter = 1
+texture = ExtResource("4_fjjlt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador"]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_equfc")
+
+[node name="Area_gravedad" type="Area2D" parent="."]
+position = Vector2(574, 381)
+collision_layer = 2
+collision_mask = 2
+gravity_space_override = 2
+gravity_point_center = Vector2(0, -2)
+gravity_direction = Vector2(0, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_gravedad"]
+shape = SubResource("RectangleShape2D_g82jp")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

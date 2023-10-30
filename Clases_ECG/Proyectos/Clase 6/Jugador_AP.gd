@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 200.0
+const SPEED = 600.0
 const JUMP_VELOCITY = -600.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -31,11 +31,9 @@ func _physics_process(delta):
 		$Sprite2D.scale.x = direction
 		if is_on_floor():
 			$AnimationPlayer.play("run")
-			$Sprite2D/CPUParticles2D.emitting = true
 	else:
 		if is_on_floor():
 			$AnimationPlayer.play("idle")
-			$Sprite2D/CPUParticles2D.emitting = false
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
